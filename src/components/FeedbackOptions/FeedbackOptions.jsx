@@ -3,31 +3,30 @@ import { Button, ButtonWrapper } from './FeedbackOptions.styled';
 import { AiFillDislike, AiFillLike, AiFillDownCircle } from 'react-icons/ai';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const optionKeys = Object.keys(options);
   return (
     <ButtonWrapper>
       <Button
         type="button"
         style={{ backgroundColor: '#22c367' }}
-        onClick={() => onLeaveFeedback(optionKeys[0])}
+        onClick={() => onLeaveFeedback(options[0])}
       >
-        {optionKeys[0]}
+        {options[0]}
         <AiFillLike />
       </Button>
       <Button
         type="button"
         style={{ backgroundColor: '#07b8f4' }}
-        onClick={() => onLeaveFeedback(optionKeys[1])}
+        onClick={() => onLeaveFeedback(options[1])}
       >
-        {optionKeys[1]}
+        {options[1]}
         <AiFillDownCircle />
       </Button>
       <Button
         type="button"
         style={{ backgroundColor: 'red' }}
-        onClick={() => onLeaveFeedback(optionKeys[2])}
+        onClick={() => onLeaveFeedback(options[2])}
       >
-        {optionKeys[2]}
+        {options[2]}
         <AiFillDislike />
       </Button>
     </ButtonWrapper>
@@ -35,11 +34,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.shape({
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-  }).isRequired,
+  options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 
